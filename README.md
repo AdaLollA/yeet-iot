@@ -1,4 +1,4 @@
-# Project 3
+# Yeet-IoT
 ## General Instructions
 - Integration several domains (Mobile access/ voice control)
 - 4 small scenarios
