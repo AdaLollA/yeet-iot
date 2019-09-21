@@ -1,0 +1,41 @@
+rule "Fire Alarm"
+when
+    Item Fire changed
+then
+    val fireNumber = Fire.state as Number
+
+    if (fireNumber < 100) {
+        logInfo("haba.rules", "firealarm")
+        Hue_Color.sendCommand(ON)
+        // Hue_Color.sendCommand(new PercentType(100))
+        Hue_Color.sendCommand(new HSBType(new DecimalType(355), new PercentType(100), new PercentType(100)))
+    } else {
+        logInfo("haba.rules", "no firealarm")
+        Hue_Color.sendCommand(OFF)
+        // Hue_Color.sendCommand(new HSBType(new DecimalType(360), new PercentType(0), new PercentType(0)))
+    }
+end
+
+rule "Natural Light"
+when
+    Item Light changed
+then
+    val lightIntensity = Light.state as Number
+
+    val newIntensity = lightIntensity/150
+    Hue_Light.sendCommand(new PercentType(newIntensity * 100))
+end
+
+rule "Air Dampener"
+when
+    Item Humidity changed 
+then
+    val humidityValue = Humidity.state as Number
+    logInfo("haba.rules", "humidity: " + humidityValue)
+
+    if (humidityValue < 80) {
+        Plug.sendCommand(ON)
+    } else {
+        Plug.sendCommand(OFF)
+    }
+end

@@ -1,0 +1,7 @@
+String Lock                         "Lock"          {channel="mqtt:topic:87779bb4:lock"}
+Number Fire                         "Fire"          {channel="mqtt:topic:87779bb4:fire"}
+Number Light                        "Light"         {channel="mqtt:topic:87779bb4:light"}
+Dimmer Hue_Light                    "Hue"           {channel="hue:0100:00178819eca2:1:brightness"}   
+Color Hue_Color                     "Right Boy"     {channel="hue:0210:00178819eca2:7:color"}
+Number Humidity                     "Humidity"      {channel="mqtt:topic:87779bb4:humidity"}
+Switch Plug                         "Plug"          {channel="zwave:device:f7895575:node11:switch_binary"}
